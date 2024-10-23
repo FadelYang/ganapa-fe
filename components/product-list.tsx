@@ -1,61 +1,51 @@
 import React from 'react'
+import ProductCard from './product-card'
 
 const itemsCategories = [
     {
-        "id": 1,
-        "name": "Pakaian"
+        "id": 2,
+        "name": "Makanan"
     }
 ]
 
 const items = [
     {
-        "name": "Sepatu Lari Nuke Speed1200",
-        "price": 45000,
-        "stock": 12,
-        "productCategoryId": itemsCategories[0].id
-    },
-    {
-        "name": "Baju Bola Jakarta United",
-        "price": 12000,
+        "id": 1,
+        "name": "Indomie Goreng",
+        "description": "Indomie Goreng",
+        "price": 3500,
         "stock": 100,
+        "image": "https://dummyimage.com/600x400/000/fff",
         "productCategoryId": itemsCategories[0].id
     },
     {
-        "name": "Celana Panjang 2XL",
+        "id": 2,
+        "name": "Indomie Kuah",
+        "description": "Indomie Goreng",
+        "price": 3500,
+        "stock": 100,
+        "image": "https://dummyimage.com/600x400/000/fff",
+        "productCategoryId": itemsCategories[0].id
+    },
+    {
+        "id": 3,
+        "name": "Mie Sukses isi 2",
+        "description": "Indomie Goreng",
         "price": 15000,
         "stock": 12,
-        "productCategoryId": itemsCategories[0].id
-    },
-    {
-        "name": "Topi Tennis Meja",
-        "price": 24000,
-        "stock": 120,
-        "productCategoryId": itemsCategories[0].id
-    },
-    {
-        "name": "Sepatu Sepak Bola Adios W2400",
-        "price": 24000,
-        "stock": 12,
-        "productCategoryId": itemsCategories[0].id
-    },
-    {
-        "name": "Kaos Kaki Panjang",
-        "price": 23000,
-        "stock": 10,
+        "image": "https://dummyimage.com/600x400/000/fff",
         "productCategoryId": itemsCategories[0].id
     }
 ]
 
 const ProductList = () => {
     return (
-        <div className='mx-auto'>
-            <h1 className='text-center text-3xl font-semibold mb-5'>Daftar Barang yang Bisa Dibayar</h1>
+        <div className='mx-auto mb-5'>
+            <h1 className='text-center text-3xl font-semibold mb-5'>Produk yang Bisa Dibayar</h1>
             <div className='flex justify-center'>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                     {items.map(item =>
-                        <div className="">
-                            {item.name}
-                        </div>
+                        <ProductCard name={item.name} price={item.price} image={item.image}></ProductCard>
                     )}
                 </div>
             </div>
