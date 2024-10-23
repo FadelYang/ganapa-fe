@@ -15,18 +15,16 @@ const ProductCard = (props: any) => {
                 <div className='my-5'>
                     <img src={props.image} alt={props.name} className='rounded-lg' />
                 </div>
-            </CardContent>
-            <CardHeader>
-                <CardDescription>
-                    <div className='flex justify-between items-center'>
-                        <div className='flex flex-col gap-1'>
-                            <CardTitle className='text-xl font-bold text-black'>{props.name}</CardTitle>
-                            <div>Rp.{formattedCurrency}</div>
-                        </div>
+                <div className='flex mt-10 justify-between items-center'>
+                    <div>
+                        <div className='text-lg font-bold'>{props.name}</div>
+                        <div>Rp.{formattedCurrency}</div>
+                    </div>
+                    <div>
                         <Button>Add to Cart</Button>
                     </div>
-                </CardDescription>
-            </CardHeader>
+                </div>
+            </CardContent>
         </Card>
     )
 }
