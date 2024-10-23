@@ -1,4 +1,9 @@
-export const loginUser = async (email: string, password: string): Promise<string> => {
+interface LoginResponse {
+    token: string,
+    role: string
+}
+
+export const loginUser = async (email: string, password: string): Promise<LoginResponse> => {
     const response = await fetch('http://localhost:8000/users/login', {
         method: 'POST',
         headers: {
@@ -14,5 +19,9 @@ export const loginUser = async (email: string, password: string): Promise<string
     }
 
     const data = await response.json()
-    return data.token
+
+    return { 
+        token: data.token,
+        role: data.role
+    }
 }

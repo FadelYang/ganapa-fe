@@ -26,15 +26,22 @@ export function LoginCard() {
     e.preventDefault()
 
     try {
-      const token = await loginUser(email, password)
+      const { token, role } = await loginUser(email, password)
 
       localStorage.setItem('token', token)
+      localStorage.setItem('role', role)
 
       setShowAlert(true)
 
-      setTimeout(() => {
-        router.push('/')
-      }, 2000)
+      if (role === 'ADMIN') {
+        setTimeout(() => {
+          router.push('/dashboard')
+        }, 2000)
+      } else {
+        setTimeout(() => {
+          router.push('/')
+        }, 2000)
+      }
     } catch (error) {
       setError((error as Error).message)
     }
