@@ -43,7 +43,7 @@ const ProductList = () => {
         <div className='mx-auto mb-5'>
             <h1 className='text-center text-3xl font-semibold mb-5'>Produk yang Bisa Dibayar</h1>
             <div className='flex justify-center'>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4'>
                     {items.map(item =>
                         <ProductCard name={item.name} price={item.price} image={item.image}></ProductCard>
                     )}
