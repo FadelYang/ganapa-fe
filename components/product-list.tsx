@@ -12,6 +12,10 @@ interface Product {
     price: number
     stock: number
     productCategoryId: number
+    productCategory: {
+        id: number
+        name: string
+    }
 }
 
 const ProductList = () => {
@@ -22,7 +26,6 @@ const ProductList = () => {
             const response = await fetch(`http://localhost:8000/products?page=${page}`)
             const data = await response.json()
             setproducts(data.data)
-            console.log(data.data);
         } catch (error) {
             console.log('Failed to fetch data', error);
         }

@@ -15,8 +15,6 @@ const ProfileCard = () => {
 
   const token = localStorage.getItem('token')
 
-  console.log(token);
-
 
   const getUserProfile = async () => {
     if (!token) {
@@ -24,16 +22,12 @@ const ProfileCard = () => {
       return;
     }
     try {
-      console.log(token);
-
       const response = await fetch('http://localhost:8000/users/me', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       })
-
-      console.log(response);
 
       const data = await response.json()
       setUser(data)
@@ -50,10 +44,6 @@ const ProfileCard = () => {
       getUserProfile()
     }
   }, [router])
-
-  useEffect(() => {
-    getUserProfile()
-  }, [])
 
   return (
     <Card className="w-[350px] pt-5">
