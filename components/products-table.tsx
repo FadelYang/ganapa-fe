@@ -91,7 +91,13 @@ const ProductTable = () => {
               {products.map(product => (
                 <TableRow key={product.id}>
                   <TableCell>{product.name}</TableCell>
-                  <TableCell>${product.price}</TableCell>
+                  <TableCell>Rp.
+                    {new Intl.NumberFormat('de-DE', {
+                      style: 'decimal',
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }).format(product.price)}
+                  </TableCell>
                   <TableCell>{product.stock}</TableCell>
                   <TableCell>
                     <div className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
