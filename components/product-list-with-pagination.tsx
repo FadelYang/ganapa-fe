@@ -65,7 +65,7 @@ const ProductListWithPagination = () => {
                             )}
                         </div>}
                 </div>
-                <div className='flex justify-center items-center mt-5'>
+                <div className='flex justify-center items-center mt-5 gap-5'>
                     {meta && (
                         <>
                             <Button
