@@ -37,7 +37,6 @@ const ProductListWithPagination = () => {
             const data = await response.json()
             setproducts(data.data)
             setMeta(data.meta)
-            console.log(data.data);
         } catch (error) {
             console.log('Failed to fetch data', error);
         } finally {
