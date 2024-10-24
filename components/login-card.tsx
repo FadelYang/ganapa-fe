@@ -26,9 +26,9 @@ export function LoginCard() {
     e.preventDefault()
 
     try {
-      const { token, role } = await loginUser(email, password)
+      const { access_token, role } = await loginUser(email, password)
 
-      localStorage.setItem('token', token)
+      localStorage.setItem('token', access_token)
       localStorage.setItem('role', role)
 
       setShowAlert(true)

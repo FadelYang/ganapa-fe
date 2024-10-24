@@ -1,5 +1,5 @@
 interface LoginResponse {
-    token: string,
+    access_token: string,
     role: string
 }
 
@@ -21,7 +21,7 @@ export const loginUser = async (email: string, password: string): Promise<LoginR
     const data = await response.json()
 
     return { 
-        token: data.token,
+        access_token: data.access_token,
         role: data.role
     }
 }
