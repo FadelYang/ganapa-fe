@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent } from './ui/card'
 import { Button } from './ui/button';
 
 const ProductCard = (props: any) => {
@@ -17,7 +17,7 @@ const ProductCard = (props: any) => {
                 </div>
                 <div className='flex mt-10 justify-between items-center'>
                     <div>
-                        <div className='text-lg font-bold'>{props.name}</div>
+                        <div className='text-md font-bold'>{props.name}</div>
                         <div>Rp.{formattedCurrency}</div>
                     </div>
                     <div>

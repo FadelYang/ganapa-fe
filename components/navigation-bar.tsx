@@ -20,11 +20,11 @@ export function NavigationBar() {
             Home
           </Link>
           <Link
-            href="#"
+            href="/products"
             className="inline-flex items-center justify-center rounded-md px-4 py-2 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
             prefetch={false}
           >
-            About
+            Products
           </Link>
           <Link
             href="/login"
@@ -49,6 +49,13 @@ export function NavigationBar() {
                 prefetch={false}
               >
                 Home
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                prefetch={false}
+              >
+                Products
               </Link>
               <LoginButton></LoginButton>
             </div>

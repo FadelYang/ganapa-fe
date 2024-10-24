@@ -26,12 +26,14 @@ interface Meta {
 const ProductListWithPagination = () => {
     const [products, setproducts] = useState<Product[]>([]);
     const [meta, setMeta] = useState<Meta | null>(null);
+    const [search, setSearch] = useState<string>('')
+    const [page, setPage] = useState<number>(1)
     const [loading, setLoading] = useState<boolean>(false);
 
-    const getProducts = async (page: number = 1) => {
+    const getProducts = async (page: number = 1, searchTerm: string = '',) => {
         setLoading(true)
         try {
-            const response = await fetch(`http://localhost:8000/products?page=${page}`)
+            const response = await fetch(`http://localhost:8000/products?page=${page}&size=10&search=${searchTerm}`)
             const data = await response.json()
             setproducts(data.data)
             setMeta(data.meta)
@@ -46,13 +48,29 @@ const ProductListWithPagination = () => {
     const imageBaseUrl = 'http://localhost:8000/uploads/'
 
     useEffect(() => {
-        getProducts()
-    }, []);
+        getProducts(page, search)
+    }, [search, page])
+
+    const handleSearchChange = (e: any) => {
+        setSearch(e.target.value)
+        setPage(1)
+    }
 
     return (
         <>
             <div className='mx-auto my-5'>
                 <h1 className='text-center text-3xl font-semibold mb-5'>Produk yang Bisa Dibayar</h1>
+                <div>
+                    <form action="" className='flex justify-center gap-3'>
+                        <input
+                            type="text"
+                            placeholder="Cari yang kamu inginkan..."
+                            value={search}
+                            onChange={handleSearchChange}
+                            className="border rounded p-2 mb-4 w-72"
+                        />
+                    </form>
+                </div>
                 <div className='flex justify-center'>
                     {loading ?
                         <div className='flex justify-center'>
@@ -71,7 +89,7 @@ const ProductListWithPagination = () => {
                             <Button
                                 variant='outline'
                                 disabled={!meta.prevPage}
-                                onClick={() => getProducts(meta.currentPage - 1)}
+                                onClick={() => getProducts(meta.currentPage - 1, search)}
                             >
                                 Previous
                             </Button>
@@ -81,7 +99,7 @@ const ProductListWithPagination = () => {
                             <Button
                                 variant='outline'
                                 disabled={!meta.nextPage}
-                                onClick={() => getProducts(meta.currentPage + 1)}
+                                onClick={() => getProducts(meta.currentPage + 1, search)}
                             >
                                 Next
                             </Button>
