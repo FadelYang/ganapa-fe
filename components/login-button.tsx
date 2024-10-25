@@ -5,7 +5,7 @@ import { isAuthenticated, logout } from '@/utils/auth'
 import Link from 'next/link'
 import { DropdownMenu } from '@radix-ui/react-dropdown-menu'
 import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { LogOut, User } from 'lucide-react'
+import { LogOut, ShoppingCart, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 const LoginButton = () => {
@@ -17,14 +17,14 @@ const LoginButton = () => {
             if (!isAuthenticated()) {
                 setIsLogin(isAuthenticated())
             }
-            
+
             checkAuthentication()
         }
     }, []);
 
     const handleLogout = () => {
         const confirmLogout = confirm('Mau logout?')
-        if (confirmLogout) {   
+        if (confirmLogout) {
             logout()
             setIsLogin(false)
             router.push('/')
@@ -46,12 +46,16 @@ const LoginButton = () => {
                                 <DropdownMenuItem>
                                     <User />
                                     <span>Profile</span>
-                                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                                 </DropdownMenuItem>
+                                <Link href="/carts">
+                                    <DropdownMenuItem>
+                                        <ShoppingCart />
+                                        <span>Cart</span>
+                                    </DropdownMenuItem>
+                                </Link>
                                 <DropdownMenuItem onClick={handleLogout}>
                                     <LogOut />
                                     <span>Log out</span>
-                                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                                 </DropdownMenuItem>
                             </DropdownMenuGroup>
                         </DropdownMenuContent>
