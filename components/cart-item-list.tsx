@@ -200,6 +200,9 @@ const CartItemList = () => {
                     }).format(totalPrice)}
                 </span>
             </div>
+            <div className='mt-10'>
+                    <Button>Bayar</Button>
+            </div>
         </>
     )
 }
